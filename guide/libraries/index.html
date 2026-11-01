@@ -1,0 +1,357 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-ooyvz5oa"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Library docs for agents | Holtkeeper</title><link rel="canonical" href="https://holtkeeper.github.io/guide/libraries/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.4"/><meta name="generator" content="Starlight v0.42.7"/><meta property="og:title" content="Library docs for agents"/><meta property="og:type" content="article"/><meta property="og:url" content="https://holtkeeper.github.io/guide/libraries/"/><meta property="og:locale" content="en"/><meta property="og:description" content="Holtkeeper can index the third-party libraries your repositories depend on and serve their version-exact documentation, release notes, public API, source and GitHub issues to agents over MCP and to people in the web UI. Agents then answer &quot;how do I use this&quot;, &quot;what changes if we upgrade&quot; and &quot;has anyone hit this error&quot; from the versions you actually use instead of searching the web."/><meta property="og:site_name" content="Holtkeeper"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="Holtkeeper can index the third-party libraries your repositories depend on and serve their version-exact documentation, release notes, public API, source and GitHub issues to agents over MCP and to people in the web UI. Agents then answer &quot;how do I use this&quot;, &quot;what changes if we upgrade&quot; and &quot;has anyone hit this error&quot; from the versions you actually use instead of searching the web."/><script>
+  window.StarlightThemeProvider = (() => {
+    let stored = null
+    try {
+      stored = localStorage.getItem('starlight-theme')
+    } catch {}
+    const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+    const theme = stored === 'light' || stored === 'dark' ? stored : stored === '' ? system : 'dark'
+    document.documentElement.dataset.theme = theme
+    return {
+      updatePickers(value = stored === '' ? 'auto' : theme) {
+        document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+          const select = picker.querySelector('select')
+          if (select) select.value = value
+          const icon = document.querySelector('#theme-icons')?.content.querySelector('.' + value)
+          const current = picker.querySelector('svg.label-icon')
+          if (icon && current) current.replaceChildren(...icon.cloneNode(true).childNodes)
+        })
+      },
+    }
+  })()
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/_astro/common.BuDZC16t.css"><style>@layer starlight.components{svg:where(.astro-yqwjbp5j){color:var(--sl-icon-color);font-size:var(--sl-icon-size,1em);width:1em;height:1em;overflow:visible}}
+</style><script type="module" src="/_astro/page.DEmTCStt.js"></script></head><body class="astro-ooyvz5oa"><a class="sl-skip-link astro-is4lajrx" href="#_top">Skip to content</a><div class="page sl-flex astro-4bz72oa5"><header class="header astro-4bz72oa5"><div class="header astro-a6tztyqs"><div class="title-wrapper sl-flex astro-a6tztyqs"><a href="/" class="site-title sl-flex astro-6pwrszwa"><img class="astro-6pwrszwa" alt src="/_astro/holtkeeper.C67Qmg3N.svg" width="128" height="128"><span class="astro-6pwrszwa" translate="no">Holtkeeper</span></a></div><div class="sl-flex print:hidden astro-a6tztyqs"><site-search class="astro-a6tztyqs astro-5zckoxwu" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-5zckoxwu"><svg aria-hidden="true" class="astro-5zckoxwu astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-5zckoxwu" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-5zckoxwu" style="display: none;"><kbd class="astro-5zckoxwu">Ctrl</kbd><kbd class="astro-5zckoxwu">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-5zckoxwu"><div class="dialog-frame sl-flex astro-5zckoxwu"><button data-close-modal class="sl-flex md:sl-hidden astro-5zckoxwu">Cancel</button><div class="search-container astro-5zckoxwu"><div id="starlight__search" class="astro-5zckoxwu"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.DMKOaegy.js"></script></div><div class="sl-hidden md:sl-flex print:hidden right-group astro-a6tztyqs"><div class="sl-flex social-icons astro-a6tztyqs"><a href="https://github.com/holtkeeper/holtkeeper" rel="me" class="sl-flex astro-frq47udc"><span class="sr-only astro-frq47udc">GitHub</span><svg aria-hidden="true" class="astro-frq47udc astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-vpyymcef"><span class="sr-only astro-vpyymcef">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-vpyymcef astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-vpyymcef"><option value="dark" class="astro-vpyymcef">Dark</option><option value="light" class="astro-vpyymcef">Light</option><option value="auto" selected class="astro-vpyymcef">Auto</option></select><svg aria-hidden="true" class="icon caret astro-vpyymcef astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script></div></div></header><nav class="sidebar print:hidden astro-4bz72oa5" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-h2e7pmdq"><svg aria-hidden="true" class="open-menu astro-h2e7pmdq astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-h2e7pmdq astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-h2e7pmdq">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-4bz72oa5"><div class="sidebar-content sl-flex astro-4bz72oa5"><ul class="hk-topics"><li><a href="/guide/getting-started/" aria-current="page"><span class="hk-topic-icon"><svg aria-hidden="true" class=" astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.17 2.06A13.1 13.1 0 0 0 19 1.87a12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2 13.1 13.1 0 0 0-2.17.19 1 1 0 0 0-.83 1v12a1 1 0 0 0 1.17 1 10.9 10.9 0 0 1 8.25 1.91l.12.07h.11a.91.91 0 0 0 .7 0h.11l.12-.07A10.899 10.899 0 0 1 20.83 16 1 1 0 0 0 22 15V3a1 1 0 0 0-.83-.94ZM11 15.35a12.87 12.87 0 0 0-6-1.48H4v-10c.333-.02.667-.02 1 0a10.86 10.86 0 0 1 6 1.8v9.68Zm9-1.44h-1a12.87 12.87 0 0 0-6 1.48V5.67a10.86 10.86 0 0 1 6-1.8c.333-.02.667-.02 1 0v10.04Zm1.17 4.15a13.098 13.098 0 0 0-2.17-.19 12.94 12.94 0 0 0-7 2.05 12.94 12.94 0 0 0-7-2.05c-.727.003-1.453.066-2.17.19A1 1 0 0 0 2 19.21a1 1 0 0 0 1.17.79 10.9 10.9 0 0 1 8.25 1.91 1 1 0 0 0 1.16 0A10.9 10.9 0 0 1 20.83 20a1 1 0 0 0 1.17-.79 1 1 0 0 0-.83-1.15Z"/></svg></span>Guide</a></li><li><a href="/modules/"><span class="hk-topic-icon"><svg aria-hidden="true" class=" astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 22H5a3 3 0 0 1-3-3V9a3 3 0 0 1 3-3h1a4 4 0 0 1 7.3-2.18c.448.64.692 1.4.7 2.18h3a1 1 0 0 1 1 1v3a4 4 0 0 1 2.18 7.3A3.86 3.86 0 0 1 18 18v3a1 1 0 0 1-1 1ZM5 8a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h11v-3.18a1 1 0 0 1 1.33-.95 1.77 1.77 0 0 0 1.74-.23 2 2 0 0 0 .93-1.37 2 2 0 0 0-.48-1.59 1.89 1.89 0 0 0-2.17-.55 1 1 0 0 1-1.33-.95V8h-3.2a1 1 0 0 1-1-1.33 1.77 1.77 0 0 0-.23-1.74 1.939 1.939 0 0 0-3-.43A2 2 0 0 0 8 6c.002.23.046.456.13.67A1 1 0 0 1 7.18 8H5Z"/></svg></span>Modules</a></li><li><a href="https://github.com/holtkeeper/holtkeeper" rel="noopener"><span class="hk-topic-icon"><svg aria-hidden="true" class=" astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></span>GitHub</a></li></ul><sl-sidebar-state-persist data-hash="18x6zis" class="astro-pexir7pu"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="hk-nav"><li><a href="/guide/getting-started/"><span>Getting started</span></a></li><li><a href="/guide/plan/"><span>Plan</span></a></li><li><a href="/guide/development/"><span>Development</span></a></li><li><a href="/guide/deployment/"><span>Deployment</span></a></li><li><a href="/guide/agent-access/"><span>Agent access</span></a></li><li><a href="/guide/libraries/" aria-current="page"><span>Library docs</span></a></li><li><a href="/guide/library-docs/"><span>Library docs (design)</span></a></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-clojd2lw"><div class="social-icons astro-clojd2lw"><a href="https://github.com/holtkeeper/holtkeeper" rel="me" class="sl-flex astro-frq47udc"><span class="sr-only astro-frq47udc">GitHub</span><svg aria-hidden="true" class="astro-frq47udc astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-vpyymcef"><span class="sr-only astro-vpyymcef">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-vpyymcef astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-vpyymcef"><option value="dark" class="astro-vpyymcef">Dark</option><option value="light" class="astro-vpyymcef">Light</option><option value="auto" selected class="astro-vpyymcef">Auto</option></select><svg aria-hidden="true" class="icon caret astro-vpyymcef astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-4bz72oa5"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-pxtfxoux"><aside class="right-sidebar-container print:hidden astro-pxtfxoux"><div class="right-sidebar astro-pxtfxoux"><div class="lg:sl-hidden astro-ebrqopoh"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-qkdvcg5v"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-qkdvcg5v"><details id="starlight__mobile-toc" class="astro-qkdvcg5v"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-qkdvcg5v"><span class="toggle sl-flex astro-qkdvcg5v">On this page<svg aria-hidden="true" class="caret astro-qkdvcg5v astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-qkdvcg5v"></span></summary><div class="dropdown astro-qkdvcg5v"><ul class="isMobile astro-gkf74zhr" style="--depth: 0;"><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#_top" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Overview</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#what-gets-indexed" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">What gets indexed</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#before-you-start" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Before you start</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#setup" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Setup</span></a><ul class="isMobile astro-gkf74zhr" style="--depth: 1;"><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#1-add-a-github-token" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">1. Add a GitHub token</span></a></li><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#2-nothing-else-to-set" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">2. Nothing else to set</span></a></li><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#3-watch-the-first-run" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">3. Watch the first run</span></a></li></ul></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#using-it" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Using it</span></a><ul class="isMobile astro-gkf74zhr" style="--depth: 1;"><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#in-the-web-ui" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">In the web UI</span></a></li><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#from-an-agent-over-mcp" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">From an agent over MCP</span></a></li><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#from-holtkeepers-own-agents" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">From Holtkeeper’s own agents</span></a></li></ul></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#issue-digests" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Issue digests</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#tuning" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Tuning</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#troubleshooting" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Troubleshooting</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-ebrqopoh"><div class="sl-container astro-ebrqopoh"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-gkf74zhr" style="--depth: 0;"><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#_top" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Overview</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#what-gets-indexed" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">What gets indexed</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#before-you-start" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Before you start</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#setup" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Setup</span></a><ul class="astro-gkf74zhr" style="--depth: 1;"><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#1-add-a-github-token" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">1. Add a GitHub token</span></a></li><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#2-nothing-else-to-set" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">2. Nothing else to set</span></a></li><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#3-watch-the-first-run" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">3. Watch the first run</span></a></li></ul></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#using-it" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Using it</span></a><ul class="astro-gkf74zhr" style="--depth: 1;"><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#in-the-web-ui" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">In the web UI</span></a></li><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#from-an-agent-over-mcp" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">From an agent over MCP</span></a></li><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#from-holtkeepers-own-agents" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">From Holtkeeper’s own agents</span></a></li></ul></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#issue-digests" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Issue digests</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#tuning" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Tuning</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#troubleshooting" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Troubleshooting</span></a></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-pxtfxoux"><main data-pagefind-body class="astro-ooyvz5oa" lang="en" dir="ltr"><div class="content-panel astro-m7aabnrt"><div class="sl-container astro-m7aabnrt"><div class="hk-title"><p class="hk-eyebrow">Guide</p><h1 id="_top">Library docs for agents</h1><a class="hk-source" href="https://github.com/holtkeeper/holtkeeper/blob/main/docs/libraries.md"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M3.5 1h6.1L13 4.4v9.1c0 .8-.7 1.5-1.5 1.5h-8C2.7 15 2 14.3 2 13.5v-11C2 1.7 2.7 1 3.5 1Zm5.6 1.2H3.5a.3.3 0 0 0-.3.3v11c0 .2.1.3.3.3h8c.2 0 .3-.1.3-.3V4.9H9.6a.5.5 0 0 1-.5-.5V2.2Z"></path></svg>docs/libraries.md</a></div></div></div><div class="content-panel astro-m7aabnrt"><div class="sl-container astro-m7aabnrt"><div class="sl-markdown-content"><p>Holtkeeper can index the third-party libraries your repositories depend on and serve their version-exact documentation, release notes, public API, source and GitHub issues to agents over MCP and to people in the web UI. Agents then answer “how do I use this”, “what changes if we upgrade” and “has anyone hit this error” from the versions you actually use instead of searching the web.</p>
+<p>This page is the how-to. The design and its trade-offs are in <a href="/guide/library-docs/">library-docs.md</a>; the server side in <a href="/modules/server/#libraries">apps/server/docs</a>; the indexer in <a href="/modules/libraries/">@holtkeeper/libraries</a>.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="what-gets-indexed">What gets indexed</h2><a class="sl-anchor-link" href="#what-gets-indexed"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “What gets indexed”</span></a></div>
+<p>For every npm package and Go module your repositories use, Holtkeeper keeps a small set of versions:</p>
+<ul>
+<li>every version some repository resolves to;</li>
+<li>the newest patch of each used minor and the newest minor of each used major (what a safe upgrade lands on);</li>
+<li>the newest stable release, the newest release of every major between yours and it, and the first release of those majors (where migration guides live).</li>
+</ul>
+<p>That is usually three to eight versions per library, at most <code dir="auto">maxVersions</code> (8). For each version it reads:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>What</th>
+<th>Needs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">archive</code></td>
+<td>README, CHANGELOG, migration guides and other Markdown shipped in the package</td>
+<td>registry access</td>
+</tr>
+<tr>
+<td><code dir="auto">api</code></td>
+<td>Exported names with declarations and doc comments (<code dir="auto">.d.ts</code> for npm, Go source for Go)</td>
+<td>registry access</td>
+</tr>
+<tr>
+<td><code dir="auto">repository</code></td>
+<td><code dir="auto">docs/</code>, <code dir="auto">llms.txt</code>, examples, changelogs from the GitHub repository at the version’s tag</td>
+<td>GitHub</td>
+</tr>
+<tr>
+<td><code dir="auto">releases</code></td>
+<td>GitHub release notes</td>
+<td>GitHub</td>
+</tr>
+<tr>
+<td><code dir="auto">issues</code></td>
+<td>Closed bug issues with their fix, answered discussions</td>
+<td>GitHub (token)</td>
+</tr>
+<tr>
+<td><code dir="auto">source</code></td>
+<td>A snapshot of the source at the tag, made the first time an agent asks for it</td>
+<td>GitHub</td>
+</tr>
+<tr>
+<td><code dir="auto">site</code></td>
+<td>The docs site (<code dir="auto">llms.txt</code>, sitemap), off by default</td>
+<td>access to that site</td>
+</tr>
+</tbody>
+</table>
+<p>Libraries your own repositories publish are left out: their API already comes from the <code dir="auto">api-surface</code> analysis. So are packages the public registry does not know, such as the ones your GitLab package registry hosts: there is nothing to index for them, and a library that disappears from the registry leaves the index on the next run.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="before-you-start">Before you start</h2><a class="sl-anchor-link" href="#before-you-start"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Before you start”</span></a></div>
+<ul>
+<li>
+<p><strong>A store and an artifact store.</strong> Every store (SQLite, Postgres) supports the index; the artifact store is <code dir="auto">.holtkeeper/artifacts</code> by default or S3 (<code dir="auto">server.artifacts</code>). Nothing else to deploy.</p>
+</li>
+<li>
+<p><strong>Outbound HTTPS from the server process</strong> (the scheduler leader runs the index, not the job workers): <code dir="auto">registry.npmjs.org</code>, <code dir="auto">proxy.golang.org</code>, <code dir="auto">api.github.com</code>, <code dir="auto">codeload.github.com</code>, and, for Go modules on vanity paths such as <code dir="auto">golang.org/x/…</code>, those hosts. Bun honours <code dir="auto">HTTPS_PROXY</code>/<code dir="auto">HTTP_PROXY</code>, so a forward proxy works.</p>
+</li>
+<li>
+<p><strong>Usage records.</strong> The index starts from what repositories use:</p>
+<ul>
+<li><code dir="auto">usages</code> records (npm, exact versions): the <strong>Package usage, weekly</strong> schedule runs it on Thursday nights;</li>
+<li><code dir="auto">fleet</code> records (npm and Go): the <strong>Quality, licenses and fleet, weekly</strong> schedule runs it on Sunday nights.</li>
+</ul>
+<p>On a fresh install, run them once instead of waiting: <strong>Jobs → Run analyzer → <code dir="auto">usages</code></strong> for your repositories, and <strong>Fleet → Run now</strong> for each group. Go modules only come from <code dir="auto">fleet</code>.</p>
+</li>
+</ul>
+<div class="sl-heading-wrapper level-h2"><h2 id="setup">Setup</h2><a class="sl-anchor-link" href="#setup"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Setup”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="1-add-a-github-token">1. Add a GitHub token</h3><a class="sl-anchor-link" href="#1-add-a-github-token"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “1. Add a GitHub token”</span></a></div>
+<p>Without a token GitHub allows 60 requests an hour, which runs out on the first few libraries, and issues lose answers and discussions (they need GraphQL). With a token the limit is 5000 an hour.</p>
+<ol>
+<li>On GitHub create a token that can read public repositories and nothing else: a fine-grained token with <strong>Public repositories (read-only)</strong> access, or a classic token with no scopes.</li>
+<li>In Holtkeeper open <strong>Credentials → Add</strong>, kind <strong>github</strong>, give it a name such as <code dir="auto">github-libraries</code>, paste the token as the secret and save.</li>
+</ol>
+<p>The token is only used to read public repositories. It never reaches agents or jobs.</p>
+<p><strong>More than one token.</strong> You can add several <code dir="auto">github</code> credentials (all are used unless the setting lists some); every request goes to the token with the most of its limit left, and when one runs out the next takes over. GitHub counts the limit per account, not per token: two tokens of the same person (even made for two organizations) share one 5000 an hour, so Holtkeeper checks whose each token is on the first request and drops duplicates with a log line <code dir="auto">github: two tokens belong to …</code>. Capacity only grows with tokens of different accounts, such as a bot account per organization that owns it.</p>
+<p><strong>What a run costs.</strong> Requests are conditional: Holtkeeper keeps each answer’s <code dir="auto">ETag</code> and asks again with <code dir="auto">If-None-Match</code>, and GitHub does not count the <code dir="auto">304 Not Modified</code> it answers when nothing changed, so later runs spend requests only on what is new. When every token is used up, the run pauses until GitHub resets the limit (at most an hour), then continues where it stopped; it does not fail its sources. The first run of a few hundred libraries takes roughly 30–40 requests per library.</p>
+<p><strong>Watching the tokens.</strong> The <strong>Credentials</strong> page (global <code dir="auto">settings:read</code>) shows, in the card of every <code dir="auto">github</code> credential, its GitHub account, requests, how many were answered <code dir="auto">304</code> from the cache and how many hit a limit, and the live <code dir="auto">core</code> limit; <strong>Usage details</strong> opens the other limits (<code dir="auto">search</code>, <code dir="auto">graphql</code> for issues) and the counts per resource. A token of an account that is already in the pool is marked as a duplicate. Below the cards, <strong>GitHub API usage</strong> sums the pool: how much of each limit is used across the distinct accounts and when it resets, waits for a reset, and requests per day by token over 7, 30 or 90 days.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="2-nothing-else-to-set">2. Nothing else to set</h3><a class="sl-anchor-link" href="#2-nothing-else-to-set"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “2. Nothing else to set”</span></a></div>
+<p>The index is on by default and uses every credential of kind <code dir="auto">github</code> it finds: once the credential from step 1 is saved, a new run starts with it (a running one is restarted with the new token). Without any token it reads GitHub anonymously and does not wait for GitHub’s limit to reset; sources that hit it are retried on the next run.</p>
+<p>The <strong>Settings → Libraries → Library docs</strong> setting is only needed to change the defaults. Only its entry for <strong>All repositories</strong> counts. For example, to use just some of the tokens and skip packages you do not need:</p>
+<div class="expressive-code"><link rel="stylesheet" href="/_astro/ec.a0kmx.css"><script type="module" src="/_astro/ec.0vx5m.js"></script><figure class="frame not-content"><figcaption class="header"></figcaption><pre data-language="json"><code><div class="ec-line"><div class="code"><span style="--0:#E6EDF3;--1:#1F2328">{</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787;--1:#116329">"github"</span><span style="--0:#E6EDF3;--1:#1F2328">: [</span><span style="--0:#A5D6FF;--1:#0A3069">"github-libraries"</span><span style="--0:#E6EDF3;--1:#1F2328">],</span></div></div><div class="ec-line"><div class="code"><span class="indent">  </span><span style="--0:#7EE787;--1:#116329">"exclude"</span><span style="--0:#E6EDF3;--1:#1F2328">: [</span><span style="--0:#A5D6FF;--1:#0A3069">"@types/*"</span><span style="--0:#E6EDF3;--1:#1F2328">, </span><span style="--0:#A5D6FF;--1:#0A3069">"eslint-*"</span><span style="--0:#E6EDF3;--1:#1F2328">]</span></div></div><div class="ec-line"><div class="code"><span style="--0:#E6EDF3;--1:#1F2328">}</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="{  &quot;github&quot;: [&quot;github-libraries&quot;],  &quot;exclude&quot;: [&quot;@types/*&quot;, &quot;eslint-*&quot;]}"><div></div></button></div></figure></div>
+<p>Everything else has defaults:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Default</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">enabled</code></td>
+<td><code dir="auto">true</code></td>
+<td><code dir="auto">false</code> stops indexing; what is indexed stays readable</td>
+</tr>
+<tr>
+<td><code dir="auto">interval</code></td>
+<td><code dir="auto">1d</code></td>
+<td>How often to look for new releases and uses, <code dir="auto">&lt;n&gt;m</code>, <code dir="auto">&lt;n&gt;h</code> or <code dir="auto">&lt;n&gt;d</code>, at least <code dir="auto">1h</code></td>
+</tr>
+<tr>
+<td><code dir="auto">github</code></td>
+<td>every <code dir="auto">github</code> credential</td>
+<td>Ids or names of the GitHub token credentials to use; <code dir="auto">[]</code> reads GitHub anonymously</td>
+</tr>
+<tr>
+<td><code dir="auto">digests</code></td>
+<td><code dir="auto">false</code></td>
+<td>Summarize issue threads agents hit with the configured LLM (see <a href="#issue-digests">Issue digests</a>)</td>
+</tr>
+<tr>
+<td><code dir="auto">refreshOnPush</code></td>
+<td><code dir="auto">true</code></td>
+<td>Queue <code dir="auto">usages</code> and <code dir="auto">fleet</code> when a push to a default branch changes a manifest or lockfile</td>
+</tr>
+<tr>
+<td><code dir="auto">exclude</code></td>
+<td><code dir="auto">["@types/*"]</code></td>
+<td>Globs of library names never indexed; <code dir="auto">Go:</code> limits a glob to Go, e.g. <code dir="auto">Go:github.com/acme/**</code></td>
+</tr>
+<tr>
+<td><code dir="auto">include</code></td>
+<td><code dir="auto">[]</code></td>
+<td>Globs indexed even when no repository uses them</td>
+</tr>
+<tr>
+<td><code dir="auto">maxVersions</code></td>
+<td><code dir="auto">8</code></td>
+<td>Versions kept per library (1–50); the ones in use are always kept</td>
+</tr>
+<tr>
+<td><code dir="auto">firstOfMajor</code></td>
+<td><code dir="auto">true</code></td>
+<td>Also index the <code dir="auto">x.0.0</code> release of each crossed major</td>
+</tr>
+<tr>
+<td><code dir="auto">sources</code></td>
+<td><code dir="auto">repository</code>, <code dir="auto">releases</code>, <code dir="auto">issues</code> on; <code dir="auto">site</code> off</td>
+<td>Turn single sources off, or docs sites on</td>
+</tr>
+<tr>
+<td><code dir="auto">graceDays</code></td>
+<td><code dir="auto">28</code></td>
+<td>Days a version (or library) stays after nothing needs it any more</td>
+</tr>
+<tr>
+<td><code dir="auto">concurrency</code></td>
+<td><code dir="auto">3</code></td>
+<td>Libraries indexed at the same time (1–8); a run mostly waits for the network, so a few at once make it faster while the GitHub limit lasts</td>
+</tr>
+</tbody>
+</table>
+<div class="sl-heading-wrapper level-h3"><h3 id="3-watch-the-first-run">3. Watch the first run</h3><a class="sl-anchor-link" href="#3-watch-the-first-run"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “3. Watch the first run”</span></a></div>
+<p>The first run starts about two minutes after the server starts; the server rereads the setting every 30 seconds, so changes need no restart. Later runs come every <code dir="auto">interval</code>, about ten minutes after new <code dir="auto">usages</code> or <code dir="auto">fleet</code> records arrive, and on <strong>Libraries → Reindex now</strong> (needs global <code dir="auto">analyses:run</code>).</p>
+<p><strong>Keeping up with the repositories.</strong> Nobody maintains the list of libraries: every run takes it from the newest <code dir="auto">usages</code> and <code dir="auto">fleet</code> records, so packages added to a repository join the index, upgraded ones get their new versions, and dropped ones leave after <code dir="auto">graceDays</code>. Those records are refreshed by the weekly schedules and, with <code dir="auto">refreshOnPush</code> (on by default), right after a push to a repository’s default branch that changes a manifest or lockfile (<code dir="auto">package.json</code>, <code dir="auto">bun.lock</code>, <code dir="auto">package-lock.json</code>, <code dir="auto">pnpm-lock.yaml</code>, <code dir="auto">yarn.lock</code>, <code dir="auto">go.mod</code>, <code dir="auto">go.sum</code>, …): Holtkeeper queues <code dir="auto">usages</code> for the repository and <code dir="auto">fleet</code> for its groups, and the index runs about ten minutes after they finish. A version bump is in the index some 15–20 minutes after the merge. This needs the push to reach Holtkeeper: through the forge webhook, or through polling, which then also lists branches.</p>
+<p>The first run downloads every library once and takes a while: minutes for a few dozen libraries, longer for hundreds; later runs only fetch what is new. Follow it on the <strong>Libraries</strong> page (sidebar <strong>MCP → Libraries</strong>): <strong>Indexing now</strong> shows how many libraries the running run has done of all, the ones it works on (<code dir="auto">concurrency</code> at a time), the time so far with a rough estimate of the rest and, when every GitHub token is used up, until when it waits; <strong>Coverage</strong> shows per source (package archive, API, repository docs, release notes, issues) how many versions are indexed, have nothing to index, failed (fetched again on the next run) or are not fetched yet; <strong>Last indexing run</strong> shows the counts and failures of the run before. Or read the server log:</p>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#FFA657;--1:#953800">kubectl</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#79C0FF;--1:#0550AE">-n</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#A5D6FF;--1:#0A3069">holtkeeper</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#A5D6FF;--1:#0A3069">logs</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#A5D6FF;--1:#0A3069">deploy/holtkeeper-web</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#FF7B72;--1:#CA212D">|</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#FFA657;--1:#953800">grep</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#A5D6FF;--1:#0A3069">libraries:</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="kubectl -n holtkeeper logs deploy/holtkeeper-web | grep libraries:"><div></div></button></div></figure></div>
+<div class="sl-heading-wrapper level-h2"><h2 id="using-it">Using it</h2><a class="sl-anchor-link" href="#using-it"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Using it”</span></a></div>
+<div class="sl-heading-wrapper level-h3"><h3 id="in-the-web-ui">In the web UI</h3><a class="sl-anchor-link" href="#in-the-web-ui"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “In the web UI”</span></a></div>
+<p><strong>MCP → Libraries</strong> lists the indexed libraries that repositories you can read use, with their versions, how many repositories use them, document sections, issues and sources whose last fetch failed. A library’s page shows every version with why it is kept (<code dir="auto">used</code>, <code dir="auto">patch</code>, <code dir="auto">minor</code>, <code dir="auto">major</code>, <code dir="auto">first</code>, <code dir="auto">latest</code>), who uses it, the status of each source, its documents and a search over them.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="from-an-agent-over-mcp">From an agent over MCP</h3><a class="sl-anchor-link" href="#from-an-agent-over-mcp"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “From an agent over MCP”</span></a></div>
+<ol>
+<li>
+<p>Open <strong>MCP server</strong> in the sidebar and create a token. It acts as you, read-only, and sees only libraries your repositories use.</p>
+</li>
+<li>
+<p>Add the server to your agent, e.g. Claude Code:</p>
+<div class="expressive-code"><figure class="frame is-terminal not-content"><figcaption class="header"><span class="title"></span><span class="sr-only">Terminal window</span></figcaption><pre data-language="bash"><code><div class="ec-line"><div class="code"><span style="--0:#FFA657;--1:#953800">claude</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#A5D6FF;--1:#0A3069">mcp</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#A5D6FF;--1:#0A3069">add</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#79C0FF;--1:#0550AE">--transport</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#A5D6FF;--1:#0A3069">http</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#A5D6FF;--1:#0A3069">holtkeeper</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#A5D6FF;--1:#0A3069">https://holtkeeper.example.com/mcp</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#79C0FF;--1:#0550AE">--header</span><span style="--0:#E6EDF3;--1:#1F2328"> </span><span style="--0:#A5D6FF;--1:#0A3069">"Authorization: Bearer hk_mcp_…"</span></div></div></code></pre><div class="copy"><div aria-live="polite"></div><button title="Copy to clipboard" data-copied="Copied!" data-code="claude mcp add --transport http holtkeeper https://holtkeeper.example.com/mcp --header &quot;Authorization: Bearer hk_mcp_…&quot;"><div></div></button></div></figure></div>
+</li>
+<li>
+<p>Ask in terms of your code; the agent picks the tools:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Use it for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">library_versions</code></td>
+<td>Which versions are indexed, which repositories use which, deprecations</td>
+</tr>
+<tr>
+<td><code dir="auto">search_library_docs</code></td>
+<td>Finding the section about an option, an API or an error, in one library or across all</td>
+</tr>
+<tr>
+<td><code dir="auto">read_library_doc</code></td>
+<td>Reading one document or section; without <code dir="auto">path</code>, the list of documents of the version</td>
+</tr>
+<tr>
+<td><code dir="auto">library_changes</code></td>
+<td>Changelog, release notes and migration guide sections between two versions</td>
+</tr>
+<tr>
+<td><code dir="auto">search_library_issues</code></td>
+<td>Known bugs and their fixes for an error message, indexed first, then a live GitHub search</td>
+</tr>
+<tr>
+<td><code dir="auto">library_source</code></td>
+<td>Browsing and reading the library’s source at the exact version</td>
+</tr>
+<tr>
+<td><code dir="auto">get_package_api</code>, <code dir="auto">list_versions</code>, <code dir="auto">diff_versions</code>, <code dir="auto">upgrade_impact</code></td>
+<td>The public API of a version, what changed between versions, and which of your call sites an upgrade breaks (npm)</td>
+</tr>
+</tbody>
+</table>
+<p>Every library tool takes an optional <code dir="auto">repo</code> (<code dir="auto">forge:path</code>, e.g. <code dir="auto">work:games/app</code>). With it, the version defaults to the one that repository uses, so “how does <code dir="auto">useQuery</code> handle retries” is answered for your version, not the newest. Without it, the newest indexed version is used. <code dir="auto">ecosystem</code> is <code dir="auto">npm</code> unless you say <code dir="auto">Go</code>.</p>
+<p>Examples of prompts that use them well:</p>
+<ul>
+<li>“We are on react-router 6 in work:shop/web. What do we have to change to move to 7?” → <code dir="auto">library_changes</code> and <code dir="auto">upgrade_impact</code>.</li>
+<li>“<code dir="auto">TypeError: Cannot read properties of undefined (reading 'getState')</code> after upgrading zustand, is this a known bug?” → <code dir="auto">search_library_issues</code>.</li>
+<li>“How is retry backoff implemented in github.com/cenkalti/backoff v4?” → <code dir="auto">library_source</code>.</li>
+</ul>
+<p>Text coming from libraries, repositories and issues is marked in the answers as third-party content, so agents treat it as data, not instructions.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="from-holtkeepers-own-agents">From Holtkeeper’s own agents</h3><a class="sl-anchor-link" href="#from-holtkeepers-own-agents"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “From Holtkeeper’s own agents”</span></a></div>
+<p>Review, port, propagate and other agent tasks get the same tools as <code dir="auto">libraries.versions</code>, <code dir="auto">libraries.search</code>, <code dir="auto">libraries.read</code>, <code dir="auto">libraries.changes</code>, <code dir="auto">libraries.issues</code> and <code dir="auto">libraries.source</code>, with the task’s repository as the default version. Nothing to configure.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="issue-digests">Issue digests</h2><a class="sl-anchor-link" href="#issue-digests"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Issue digests”</span></a></div>
+<p>With <code dir="auto">"digests": true</code>, the first time an issue thread comes up in a search it is summarized by the configured LLM into problem, symptoms, affected versions, fixed-in version and workaround, and the summary is stored, so later searches show it directly. At most three threads are summarized per search. Runs are charged to <code dir="auto">llm.budget</code> under task kind <code dir="auto">library-digest</code> and show up in <strong>AI usage</strong>. Over MCP they only happen when the call passes a <code dir="auto">repo</code> you can read, since the repository decides which model and budget apply.</p>
+<p>The model is the <code dir="auto">library-digest</code> entry of <strong>Settings → AI → Models per task</strong> (<code dir="auto">llm.models</code>). Every preset there sets it to <code dir="auto">claude-haiku@latest</code>; without an entry Holtkeeper still picks <code dir="auto">claude-haiku@latest</code> when your provider lists it and falls back to <strong>Model</strong> (<code dir="auto">llm.model</code>) otherwise. A summary is a short structured extraction, so a small model does it well; set another entry, e.g. <code dir="auto">"library-digest": "claude-sonnet@latest"</code>, if you want more careful summaries.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="tuning">Tuning</h2><a class="sl-anchor-link" href="#tuning"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Tuning”</span></a></div>
+<ul>
+<li><strong>Too many libraries.</strong> Exclude noise such as <code dir="auto">@types/*</code> (default), test-only tooling or internal mirrors: <code dir="auto">"exclude": ["@types/*", "eslint-*", "@storybook/*"]</code>.</li>
+<li><strong>A library nobody uses yet</strong> (evaluating a migration target): <code dir="auto">"include": ["@tanstack/react-query"]</code>.</li>
+<li><strong>Fewer versions.</strong> <code dir="auto">"maxVersions": 4</code> keeps the versions in use plus the most useful upgrade targets.</li>
+<li><strong>Docs only on a website</strong> (no <code dir="auto">docs/</code> in the repository, nothing in the package): <code dir="auto">"sources": { "site": true }</code>. It reads <code dir="auto">llms.txt</code> or the sitemap, honours <code dir="auto">robots.txt</code> and skips sites that need JavaScript.</li>
+<li><strong>Faster pick-up of releases</strong>: <code dir="auto">"interval": "6h"</code>.</li>
+</ul>
+<div class="sl-heading-wrapper level-h2"><h2 id="troubleshooting">Troubleshooting</h2><a class="sl-anchor-link" href="#troubleshooting"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Troubleshooting”</span></a></div>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Cause and fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The Libraries page says indexing is off</td>
+<td>The <code dir="auto">libraries</code> entry for <strong>All repositories</strong> has <code dir="auto">enabled: false</code>, or its value does not parse (an <code dir="auto">interval</code> under <code dir="auto">1h</code>, for example)</td>
+</tr>
+<tr>
+<td>The page is empty after a run</td>
+<td>No <code dir="auto">usages</code> or <code dir="auto">fleet</code> records yet: run those analyses first</td>
+</tr>
+<tr>
+<td><code dir="auto">libraries: no GitHub token could be read; reading GitHub anonymously</code> in the log</td>
+<td>None of the credentials the <code dir="auto">github</code> field lists exists or can be read: check their names or ids, or remove the field to use every <code dir="auto">github</code> credential. A single missing one is logged as <code dir="auto">no credential "…"</code> and left out</td>
+</tr>
+<tr>
+<td>Runs take long and the log shows <code dir="auto">github: core rate limit exhausted; waiting …</code></td>
+<td>Every token is used up; the run waits for the reset and goes on. Add a token of another account to share the load</td>
+</tr>
+<tr>
+<td><code dir="auto">github: two tokens belong to …</code> in the log</td>
+<td>Both tokens are of one GitHub account and share its limit; one of them is not used</td>
+</tr>
+<tr>
+<td><code dir="auto">api</code> is <code dir="auto">missing</code> for an npm package</td>
+<td>The package ships no <code dir="auto">.d.ts</code>; types published separately as <code dir="auto">@types/…</code> are not used for it</td>
+</tr>
+<tr>
+<td>An agent gets “not indexed” for a library you can see</td>
+<td>The token’s owner cannot read any repository that uses it, the library is excluded, or the run has not reached it yet</td>
+</tr>
+<tr>
+<td><code dir="auto">repository</code>, <code dir="auto">releases</code>, <code dir="auto">issues</code> are <code dir="auto">skipped</code></td>
+<td>The library is not hosted on GitHub; only the package archive and API are indexed</td>
+</tr>
+<tr>
+<td><code dir="auto">repository</code> is <code dir="auto">missing</code>: “larger than … bytes”</td>
+<td>The repository tarball at that tag is over 100 MB compressed, so its docs are not downloaded; the package archive and API still are</td>
+</tr>
+</tbody>
+</table>
+</div><footer class="sl-flex astro-pkxzuylw"><div class="meta sl-flex astro-pkxzuylw"><a href="https://github.com/holtkeeper/holtkeeper/edit/main/docs/libraries.md" class="sl-flex print:hidden astro-fryamha7"><svg aria-hidden="true" class="astro-fryamha7 astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a></div><div class="pagination-links print:hidden astro-jhy2ux4d" dir="ltr"><a href="/guide/agent-access/" rel="prev" class="astro-jhy2ux4d"><svg aria-hidden="true" class="astro-jhy2ux4d astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-jhy2ux4d">Previous<br class="astro-jhy2ux4d"><span class="link-title astro-jhy2ux4d">Agent access</span></span></a><a href="/guide/library-docs/" rel="next" class="astro-jhy2ux4d"><svg aria-hidden="true" class="astro-jhy2ux4d astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-jhy2ux4d">Next<br class="astro-jhy2ux4d"><span class="link-title astro-jhy2ux4d">Library docs (design)</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>
