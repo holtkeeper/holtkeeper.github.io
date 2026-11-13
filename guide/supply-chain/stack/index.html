@@ -1,0 +1,305 @@
+<!DOCTYPE html><html lang="en" dir="ltr" data-theme="dark" data-has-toc data-has-sidebar class="astro-ooyvz5oa"><head><meta charset="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>Stack | Holtkeeper</title><link rel="canonical" href="https://holtkeeper.github.io/guide/supply-chain/stack/"/><link rel="sitemap" href="/sitemap-index.xml"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&amp;display=swap"/><link rel="shortcut icon" href="/favicon.svg" type="image/svg+xml"/><meta name="generator" content="Astro v7.4.4"/><meta name="generator" content="Starlight v0.42.7"/><meta property="og:title" content="Stack"/><meta property="og:type" content="article"/><meta property="og:url" content="https://holtkeeper.github.io/guide/supply-chain/stack/"/><meta property="og:locale" content="en"/><meta property="og:description" content="See which runtimes, package managers, services and base images every repository uses, which release lines reach end of life, and whether each repository still matches its group's convention files."/><meta property="og:site_name" content="Holtkeeper"/><meta name="twitter:card" content="summary_large_image"/><meta name="description" content="See which runtimes, package managers, services and base images every repository uses, which release lines reach end of life, and whether each repository still matches its group's convention files."/><script>
+  window.StarlightThemeProvider = (() => {
+    let stored = null
+    try {
+      stored = localStorage.getItem('starlight-theme')
+    } catch {}
+    const system = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+    const theme = stored === 'light' || stored === 'dark' ? stored : stored === '' ? system : 'dark'
+    document.documentElement.dataset.theme = theme
+    return {
+      updatePickers(value = stored === '' ? 'auto' : theme) {
+        document.querySelectorAll('starlight-theme-select').forEach((picker) => {
+          const select = picker.querySelector('select')
+          if (select) select.value = value
+          const icon = document.querySelector('#theme-icons')?.content.querySelector('.' + value)
+          const current = picker.querySelector('svg.label-icon')
+          if (icon && current) current.replaceChildren(...icon.cloneNode(true).childNodes)
+        })
+      },
+    }
+  })()
+</script><template id="theme-icons"><svg aria-hidden="true" class="light astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M5 12a1 1 0 0 0-1-1H3a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1Zm.64 5-.71.71a1 1 0 0 0 0 1.41 1 1 0 0 0 1.41 0l.71-.71A1 1 0 0 0 5.64 17ZM12 5a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1Zm5.66 2.34a1 1 0 0 0 .7-.29l.71-.71a1 1 0 1 0-1.41-1.41l-.66.71a1 1 0 0 0 0 1.41 1 1 0 0 0 .66.29Zm-12-.29a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.71-.71a1.004 1.004 0 1 0-1.43 1.41l.73.71ZM21 11h-1a1 1 0 0 0 0 2h1a1 1 0 0 0 0-2Zm-2.64 6A1 1 0 0 0 17 18.36l.71.71a1 1 0 0 0 1.41 0 1 1 0 0 0 0-1.41l-.76-.66ZM12 6.5a5.5 5.5 0 1 0 5.5 5.5A5.51 5.51 0 0 0 12 6.5Zm0 9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm0 3.5a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1Z"/></svg><svg aria-hidden="true" class="dark astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.64 13a1 1 0 0 0-1.05-.14 8.049 8.049 0 0 1-3.37.73 8.15 8.15 0 0 1-8.14-8.1 8.59 8.59 0 0 1 .25-2A1 1 0 0 0 8 2.36a10.14 10.14 0 1 0 14 11.69 1 1 0 0 0-.36-1.05Zm-9.5 6.69A8.14 8.14 0 0 1 7.08 5.22v.27a10.15 10.15 0 0 0 10.14 10.14 9.784 9.784 0 0 0 2.1-.22 8.11 8.11 0 0 1-7.18 4.32v-.04Z"/></svg><svg aria-hidden="true" class="auto astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg></template><link rel="stylesheet" href="/_astro/print.ehPL0gv-.css" media="print"><link rel="stylesheet" href="/_astro/common.DFQobwNO.css"><link rel="stylesheet" href="/_astro/holtkeeper.WDL5hzVi.css"><script type="module" src="/_astro/page.Ej1WzoD-.js"></script></head><body class="astro-ooyvz5oa"><a class="sl-skip-link astro-is4lajrx" href="#_top">Skip to content</a><div class="page sl-flex astro-4bz72oa5"><header class="header astro-4bz72oa5"><div class="hk-header astro-xiqy3rs3"><div class="hk-header-top astro-xiqy3rs3"><div class="hk-header-title astro-xiqy3rs3"><a href="/" class="site-title sl-flex astro-6pwrszwa"><img class="astro-6pwrszwa" alt src="/_astro/holtkeeper.CLLQizdh.svg" width="128" height="128"><span class="astro-6pwrszwa" translate="no">Holtkeeper</span></a><span class="hk-header-slash astro-xiqy3rs3" aria-hidden="true">/</span><span class="hk-header-docs astro-xiqy3rs3">Docs</span></div><div class="hk-header-search print:hidden astro-xiqy3rs3"><site-search class="astro-xiqy3rs3 astro-5zckoxwu" data-translations="{&quot;placeholder&quot;:&quot;Search&quot;}"><button data-open-modal disabled aria-label="Search" aria-keyshortcuts="Control+K" class="astro-5zckoxwu"><svg aria-hidden="true" class="astro-5zckoxwu astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21.71 20.29 18 16.61A9 9 0 1 0 16.61 18l3.68 3.68a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.39ZM11 18a7 7 0 1 1 0-14 7 7 0 0 1 0 14Z"/></svg><span class="sl-hidden md:sl-block astro-5zckoxwu" aria-hidden="true">Search</span><kbd class="sl-hidden md:sl-flex astro-5zckoxwu" style="display: none;"><kbd class="astro-5zckoxwu">Ctrl</kbd><kbd class="astro-5zckoxwu">K</kbd></kbd></button><dialog style="padding:0" aria-label="Search" class="astro-5zckoxwu"><div class="dialog-frame sl-flex astro-5zckoxwu"><button data-close-modal class="sl-flex md:sl-hidden astro-5zckoxwu">Cancel</button><div class="search-container astro-5zckoxwu"><div id="starlight__search" class="astro-5zckoxwu"></div></div></div></dialog></site-search><script>
+	(() => {
+		const openBtn = document.querySelector('button[data-open-modal]');
+		const shortcut = openBtn?.querySelector('kbd');
+		if (!openBtn || !(shortcut instanceof HTMLElement)) return;
+		const platformKey = shortcut.querySelector('kbd');
+		if (platformKey && /(Mac|iPhone|iPod|iPad)/i.test(navigator.platform)) {
+			platformKey.textContent = '⌘';
+			openBtn.setAttribute('aria-keyshortcuts', 'Meta+K');
+		}
+		shortcut.style.display = '';
+	})();
+</script><script type="module" src="/_astro/Search.astro_astro_type_script_index_0_lang.DMKOaegy.js"></script></div><div class="sl-hidden md:sl-flex print:hidden hk-header-right astro-xiqy3rs3"><a href="https://github.com/holtkeeper/holtkeeper" rel="me" class="sl-flex astro-frq47udc"><span class="sr-only astro-frq47udc">GitHub</span><svg aria-hidden="true" class="astro-frq47udc astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-vpyymcef"><span class="sr-only astro-vpyymcef">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-vpyymcef astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-vpyymcef"><option value="dark" class="astro-vpyymcef">Dark</option><option value="light" class="astro-vpyymcef">Light</option><option value="auto" selected class="astro-vpyymcef">Auto</option></select><svg aria-hidden="true" class="icon caret astro-vpyymcef astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script><script type="module">var e=`starlight-theme`,t=e=>e===`auto`||e===`dark`||e===`light`?e:`auto`,n=()=>t(typeof localStorage<`u`&&localStorage.getItem(e));function r(t){typeof localStorage<`u`&&localStorage.setItem(e,t===`light`||t===`dark`?t:``)}var i=()=>matchMedia(`(prefers-color-scheme: light)`).matches?`light`:`dark`;function a(e){StarlightThemeProvider.updatePickers(e),document.documentElement.dataset.theme=e===`auto`?i():e,r(e)}matchMedia(`(prefers-color-scheme: light)`).addEventListener(`change`,()=>{n()===`auto`&&a(`auto`)});var o=class extends HTMLElement{constructor(){super(),a(n()),this.querySelector(`select`)?.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&a(t(e.currentTarget.value))})}};customElements.define(`starlight-theme-select`,o);</script></div></div><nav class="hk-tabs print:hidden astro-xiqy3rs3" aria-label="Documentation sections"><a href="/start/" class="astro-xiqy3rs3">Start</a><a href="/guide/" aria-current="page" class="astro-xiqy3rs3">Guide</a><a href="/agents/" class="astro-xiqy3rs3">Agents</a><a href="/self-host/" class="astro-xiqy3rs3">Self-host</a><a href="/develop/" class="astro-xiqy3rs3">Develop</a><a href="/reference/" class="astro-xiqy3rs3">Reference</a></nav></div></header><nav class="sidebar print:hidden astro-4bz72oa5" aria-label="Main"><button popovertarget="starlight__sidebar" class="sl-menu-button sl-flex md:sl-hidden print:hidden astro-h2e7pmdq"><svg aria-hidden="true" class="open-menu astro-h2e7pmdq astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M3 8h18a1 1 0 1 0 0-2H3a1 1 0 0 0 0 2Zm18 8H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Zm0-5H3a1 1 0 0 0 0 2h18a1 1 0 0 0 0-2Z"/></svg><svg aria-hidden="true" class="close-menu astro-h2e7pmdq astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m13.41 12 6.3-6.29a1.004 1.004 0 1 0-1.42-1.42L12 10.59l-6.29-6.3a1.004 1.004 0 0 0-1.42 1.42l6.3 6.29-6.3 6.29a1 1 0 0 0 0 1.42.998.998 0 0 0 1.42 0l6.29-6.3 6.29 6.3a.999.999 0 0 0 1.42 0 1 1 0 0 0 0-1.42L13.41 12Z"/></svg><span class="sr-only astro-h2e7pmdq">Menu</span></button><script type="module">var e=class extends HTMLElement{constructor(){super();let e=matchMedia(`(min-width: 50em)`),t=()=>{this.popover=e.matches?null:`auto`};t(),e.addEventListener(`change`,()=>t()),this.addEventListener(`toggle`,({newState:e})=>this.trapFocus(e===`open`))}trapFocus(e){document.querySelectorAll(`.main-frame, .sl-skip-link`).forEach(t=>{t.toggleAttribute(`inert`,e)})}};customElements.define(`sl-sidebar-pane`,e);</script><script type="module">var e=class extends HTMLElement{constructor(){super();let e=this.querySelector(`select`);e&&(e.addEventListener(`change`,e=>{e.currentTarget instanceof HTMLSelectElement&&(window.location.pathname=e.currentTarget.value)}),window.addEventListener(`pageshow`,t=>{if(!t.persisted)return;let n=e.querySelector(`option[selected]`)?.index;n!==e.selectedIndex&&(e.selectedIndex=n??0)}))}};customElements.define(`starlight-lang-select`,e);</script><sl-sidebar-pane popover id="starlight__sidebar" class="sidebar-pane astro-4bz72oa5"><div class="sidebar-content sl-flex astro-4bz72oa5"><sl-sidebar-state-persist data-hash="19lrs1e" class="astro-pexir7pu"><script aria-hidden="true">
+		(() => {
+			try {
+				if (!matchMedia('(min-width: 50em)').matches) return;
+				/** @type {HTMLElement | null} */
+				const target = document.querySelector('sl-sidebar-state-persist');
+				const state = JSON.parse(sessionStorage.getItem('sl-sidebar-state') || '0');
+				if (!target || !state || target.dataset.hash !== state.hash) return;
+				window._starlightScrollRestore = state.scroll;
+				customElements.define(
+					'sl-sidebar-restore',
+					class SidebarRestore extends HTMLElement {
+						connectedCallback() {
+							try {
+								const idx = parseInt(this.dataset.index || '');
+								const details = this.closest('details');
+								if (details && typeof state.open[idx] === 'boolean') details.open = state.open[idx];
+							} catch {}
+						}
+					}
+				);
+			} catch {}
+		})();
+	</script><ul class="hk-nav"><li><a href="/guide/"><span>Overview</span></a></li><li><details open><summary><svg class="hk-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10.5L12 4l8 6.5V20h-5v-6h-6v6H4z"></path></svg><span>Home</span><span class="hk-count">3</span><svg aria-hidden="true" class="hk-caret astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="0"></sl-sidebar-restore><ul class="hk-nav hk-nav-nested"><li><a href="/guide/home/overview/"><span>Overview</span></a></li><li><a href="/guide/home/inbox/"><span>Inbox</span></a></li><li><a href="/guide/home/command-palette/"><span>Command palette</span></a></li></ul></details></li><li><details><summary><svg class="hk-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6.5A1.5 1.5 0 0 1 4.5 5H9l2 2h8.5A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"></path></svg><span>Repos</span><span class="hk-count">4</span><svg aria-hidden="true" class="hk-caret astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="1"></sl-sidebar-restore><ul class="hk-nav hk-nav-nested"><li><a href="/guide/repos/repositories/"><span>Repositories</span></a></li><li><a href="/guide/repos/groups/"><span>Groups</span></a></li><li><a href="/guide/repos/repository-hub/"><span>Repository hub</span></a></li><li><a href="/guide/repos/repository-settings/"><span>Repository settings</span></a></li></ul></details></li><li><details><summary><svg class="hk-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"></path></svg><span>Chat</span><span class="hk-count">1</span><svg aria-hidden="true" class="hk-caret astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="2"></sl-sidebar-restore><ul class="hk-nav hk-nav-nested"><li><a href="/guide/chat/threads/"><span>Threads</span></a></li></ul></details></li><li><details open><summary class="hk-has-current"><svg class="hk-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 7.5l-9-4.5-9 4.5v9l9 4.5 9-4.5z"></path><path d="M3 7.5l9 4.5 9-4.5M12 12v9"></path></svg><span>Supply chain</span><span class="hk-count">5</span><svg aria-hidden="true" class="hk-caret astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="3"></sl-sidebar-restore><ul class="hk-nav hk-nav-nested"><li><a href="/guide/supply-chain/libraries/"><span>Libraries</span></a></li><li><a href="/guide/supply-chain/security/"><span>Security</span></a></li><li><a href="/guide/supply-chain/licenses/"><span>Licenses</span></a></li><li><a href="/guide/supply-chain/stack/" aria-current="page"><span>Stack</span></a></li><li><a href="/guide/supply-chain/public-api/"><span>Public API</span></a></li></ul></details></li><li><details><summary><svg class="hk-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V9M10 19V5M16 19v-7M21 19H3"></path></svg><span>Quality</span><span class="hk-count">7</span><svg aria-hidden="true" class="hk-caret astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="4"></sl-sidebar-restore><ul class="hk-nav hk-nav-nested"><li><a href="/guide/quality/coverage/"><span>Coverage</span></a></li><li><a href="/guide/quality/bundles/"><span>Bundles</span></a></li><li><a href="/guide/quality/assets/"><span>Assets and media</span></a></li><li><a href="/guide/quality/ci/"><span>CI</span></a></li><li><a href="/guide/quality/branches/"><span>Branches</span></a></li><li><a href="/guide/quality/reviews/"><span>Reviews</span></a></li><li><a href="/guide/quality/analysis-record/"><span>Analysis record</span></a></li></ul></details></li><li><details><summary><svg class="hk-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3a2 2 0 1 0 0 4a2 2 0 1 0 0-4zM6 17a2 2 0 1 0 0 4a2 2 0 1 0 0-4zM18 7a2 2 0 1 0 0 4a2 2 0 1 0 0-4z"></path><path d="M6 7v10M18 11c0 4-4 5-10 6.5"></path></svg><span>Releases</span><span class="hk-count">3</span><svg aria-hidden="true" class="hk-caret astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="5"></sl-sidebar-restore><ul class="hk-nav hk-nav-nested"><li><a href="/guide/releases/overview/"><span>Releases overview</span></a></li><li><a href="/guide/releases/timeline/"><span>Release timeline</span></a></li><li><a href="/guide/releases/flow-setup/"><span>Release flow setup</span></a></li></ul></details></li><li><details><summary><svg class="hk-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"></path></svg><span>Knowledge</span><span class="hk-count">3</span><svg aria-hidden="true" class="hk-caret astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="6"></sl-sidebar-restore><ul class="hk-nav hk-nav-nested"><li><a href="/guide/knowledge/guide/"><span>Team guide</span></a></li><li><a href="/guide/knowledge/notes/"><span>Notes</span></a></li><li><a href="/guide/knowledge/learnings/"><span>Learnings</span></a></li></ul></details></li><li><details><summary><svg class="hk-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"></path><path d="M12 4v4M9 13v1M15 13v1"></path></svg><span>Ops</span><span class="hk-count">4</span><svg aria-hidden="true" class="hk-caret astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="7"></sl-sidebar-restore><ul class="hk-nav hk-nav-nested"><li><a href="/guide/ops/runs/"><span>Runs</span></a></li><li><a href="/guide/ops/tasks/"><span>Tasks</span></a></li><li><a href="/guide/ops/automation/"><span>Automation</span></a></li><li><a href="/guide/ops/ai-spend/"><span>AI spend</span></a></li></ul></details></li><li><details><summary><svg class="hk-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h9M17 7h3M4 17h3M11 17h9"></path><path d="M15 5a2 2 0 1 0 0 4a2 2 0 1 0 0-4zM9 15a2 2 0 1 0 0 4a2 2 0 1 0 0-4z"></path></svg><span>Settings</span><span class="hk-count">8</span><svg aria-hidden="true" class="hk-caret astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="8"></sl-sidebar-restore><ul class="hk-nav hk-nav-nested"><li><a href="/guide/settings/people/"><span>People &amp; access</span></a></li><li><a href="/guide/settings/ai/"><span>AI</span></a></li><li><a href="/guide/settings/integrations/"><span>Integrations</span></a></li><li><a href="/guide/settings/slack/"><span>Slack app</span></a></li><li><a href="/guide/settings/analyzers/"><span>Analyzers</span></a></li><li><a href="/guide/settings/policies/"><span>Policies</span></a></li><li><a href="/guide/settings/system/"><span>System</span></a></li><li><a href="/guide/settings/audit-log/"><span>Audit log</span></a></li></ul></details></li><li><details><summary><svg class="hk-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4a4 4 0 1 0 0 8a4 4 0 1 0 0-8z"></path><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"></path></svg><span>Account</span><span class="hk-count">2</span><svg aria-hidden="true" class="hk-caret astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></summary><sl-sidebar-restore data-index="9"></sl-sidebar-restore><ul class="hk-nav hk-nav-nested"><li><a href="/guide/account/profile/"><span>Profile and access</span></a></li><li><a href="/guide/account/connect-agents/"><span>Connect agents</span></a></li></ul></details></li></ul><script aria-hidden="true">
+		(() => {
+			const scroller = document.getElementById('starlight__sidebar');
+			if (!window._starlightScrollRestore || !scroller) return;
+			scroller.scrollTop = window._starlightScrollRestore;
+			delete window._starlightScrollRestore;
+		})();
+	</script></sl-sidebar-state-persist><div class="md:sl-hidden"><div class="mobile-preferences sl-flex astro-clojd2lw"><div class="social-icons astro-clojd2lw"><a href="https://github.com/holtkeeper/holtkeeper" rel="me" class="sl-flex astro-frq47udc"><span class="sr-only astro-frq47udc">GitHub</span><svg aria-hidden="true" class="astro-frq47udc astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57L9 21.07c-3.34.72-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.08 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22l-.01 3.29c0 .31.2.69.82.57A12 12 0 0 0 12 .3Z"/></svg></a></div><starlight-theme-select><label style="--sl-select-width: 6.25em" class="astro-vpyymcef"><span class="sr-only astro-vpyymcef">Select theme</span><svg aria-hidden="true" class="icon label-icon astro-vpyymcef astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M21 14h-1V7a3 3 0 0 0-3-3H7a3 3 0 0 0-3 3v7H3a1 1 0 0 0-1 1v2a3 3 0 0 0 3 3h14a3 3 0 0 0 3-3v-2a1 1 0 0 0-1-1ZM6 7a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v7H6V7Zm14 10a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-1h16v1Z"/></svg><select autocomplete="off" class="astro-vpyymcef"><option value="dark" class="astro-vpyymcef">Dark</option><option value="light" class="astro-vpyymcef">Light</option><option value="auto" selected class="astro-vpyymcef">Auto</option></select><svg aria-hidden="true" class="icon caret astro-vpyymcef astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1em;"><path d="M17 9.17a1 1 0 0 0-1.41 0L12 12.71 8.46 9.17a1 1 0 1 0-1.41 1.42l4.24 4.24a1.002 1.002 0 0 0 1.42 0L17 10.59a1.002 1.002 0 0 0 0-1.42Z"/></svg></label></starlight-theme-select><script>
+	StarlightThemeProvider.updatePickers();
+</script></div></div></div></sl-sidebar-pane></nav><div class="main-frame astro-4bz72oa5"><script type="module">var e=document.getElementById(`starlight__sidebar`),t=e?.querySelector(`sl-sidebar-state-persist`),n=`sl-sidebar-state`,r=()=>{let r=[],i=t?.dataset.hash||``;try{let e=sessionStorage.getItem(n),t=JSON.parse(e||`{}`);Array.isArray(t.open)&&t.hash===i&&(r=t.open)}catch{}return{hash:i,open:r,scroll:e?.scrollTop||0}},i=e=>{try{sessionStorage.setItem(n,JSON.stringify(e))}catch{}},a=()=>i(r()),o=(e,t)=>{let n=r();n.open[t]=e,i(n)};t?.addEventListener(`click`,e=>{if(!(e.target instanceof Element))return;let t=e.target.closest(`summary`)?.closest(`details`);if(!t)return;let n=t.querySelector(`sl-sidebar-restore`),r=parseInt(n?.dataset.index||``);isNaN(r)||o(!t.open,r)}),addEventListener(`visibilitychange`,()=>{document.visibilityState===`hidden`&&a()});</script><div class="lg:sl-flex astro-pxtfxoux"><aside class="right-sidebar-container print:hidden astro-pxtfxoux"><div class="right-sidebar astro-pxtfxoux"><div class="lg:sl-hidden astro-ebrqopoh"><mobile-starlight-toc data-min-h="2" data-max-h="3" class="astro-qkdvcg5v"><nav aria-labelledby="starlight__on-this-page--mobile" class="astro-qkdvcg5v"><details id="starlight__mobile-toc" class="astro-qkdvcg5v"><summary id="starlight__on-this-page--mobile" class="sl-flex astro-qkdvcg5v"><span class="toggle sl-flex astro-qkdvcg5v">On this page<svg aria-hidden="true" class="caret astro-qkdvcg5v astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1rem;"><path d="m14.83 11.29-4.24-4.24a1 1 0 1 0-1.42 1.41L12.71 12l-3.54 3.54a1 1 0 0 0 0 1.41 1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.24-4.24a1.002 1.002 0 0 0 0-1.42Z"/></svg></span><span class="display-current astro-qkdvcg5v"></span></summary><div class="dropdown astro-qkdvcg5v"><ul class="isMobile astro-gkf74zhr" style="--depth: 0;"><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#_top" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Overview</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#what-the-page-shows" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">What the page shows</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#runtimes" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Runtimes</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#upgrade-a-release-line" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Upgrade a release line</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#conventions" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Conventions</span></a><ul class="isMobile astro-gkf74zhr" style="--depth: 1;"><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#define-a-convention" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">Define a convention</span></a></li></ul></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#run-a-scan" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Run a scan</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#in-a-group" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">In a group</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#related" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Related</span></a></li></ul></div></details></nav></mobile-starlight-toc><script type="module" src="/_astro/MobileTableOfContents.astro_astro_type_script_index_0_lang.C3fM4Kra.js"></script></div><div class="right-sidebar-panel sl-hidden lg:sl-block astro-ebrqopoh"><div class="sl-container astro-ebrqopoh"><starlight-toc data-min-h="2" data-max-h="3"><nav aria-labelledby="starlight__on-this-page"><h2 id="starlight__on-this-page">On this page</h2><ul class="astro-gkf74zhr" style="--depth: 0;"><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#_top" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Overview</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#what-the-page-shows" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">What the page shows</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#runtimes" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Runtimes</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#upgrade-a-release-line" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Upgrade a release line</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#conventions" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Conventions</span></a><ul class="astro-gkf74zhr" style="--depth: 1;"><li style="--depth: 1;" class="astro-gkf74zhr"><a href="#define-a-convention" style="--depth: 1;" class="astro-gkf74zhr"><span style="--depth: 1;" class="astro-gkf74zhr">Define a convention</span></a></li></ul></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#run-a-scan" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Run a scan</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#in-a-group" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">In a group</span></a></li><li style="--depth: 0;" class="astro-gkf74zhr"><a href="#related" style="--depth: 0;" class="astro-gkf74zhr"><span style="--depth: 0;" class="astro-gkf74zhr">Related</span></a></li></ul></nav></starlight-toc><script type="module" src="/_astro/TableOfContents.astro_astro_type_script_index_0_lang.BpJaGz7G.js"></script></div></div></div></aside><div class="main-pane astro-pxtfxoux"><main data-pagefind-body class="astro-ooyvz5oa" lang="en" dir="ltr"><div class="content-panel astro-m7aabnrt"><div class="sl-container astro-m7aabnrt"><div class="hk-title"><p class="hk-crumbs"><span>Guide</span><span>Supply chain</span></p><h1 id="_top">Stack</h1><div class="hk-meta"><span class="hk-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path></svg>In the panel: Supply chain › Stack</span><span class="hk-tag hk-mono">/supply/stack</span><span class="hk-tag info">Needs catalog:read</span></div></div></div></div><div class="content-panel astro-m7aabnrt"><div class="sl-container astro-m7aabnrt"><div class="sl-markdown-content">
+<p>See which runtimes, package managers, services and base images every repository uses, which release lines reach end of life, and whether each repository still matches its group’s convention files.</p>
+<figure class="hk-ui-root hk-screen not-content" aria-label="In the panel: Supply chain › Stack"><figcaption class="hk-screen-cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path></svg>In the panel · Supply chain › Stack</figcaption><div class="hk-screen-body"><div class="hk-toolbar"><span class="hk-toolbar-title">Stack</span><span class="hk-seg"><span class="on">My teams<span class="hk-count-ui">6</span></span><span>All I can see<span class="hk-count-ui">21</span></span></span><span class="hk-sp"></span><span class="hk-tag">Group: Any ▾</span><span class="hk-btn primary">Run stack scan</span></div><div class="hk-strip"><span><b>21</b> repositories</span><span class="hk-tone-bad"><b>3</b> on end of life</span><span class="hk-tone-warn"><b>4</b> end of life soon</span><span class="hk-tone-warn"><b>6</b> behind a major</span><span><b>2 drift</b> conventions · Open</span></div><div class="hk-tabs-ui"><span class="on">Runtimes</span><span>Conventions<span class="hk-count-ui">2</span></span></div><div class="hk-stack"><span class="hk-seg"><span class="on">All</span><span>Ends soon<span class="hk-count-ui">4</span></span><span>End of life<span class="hk-count-ui">3</span></span></span><span class="hk-tag">Kind: runtime ▾</span></div><div class="hk-table-wrap"><table>
+<thead>
+<tr>
+<th>Repository</th>
+<th>node</th>
+<th>go</th>
+<th>pnpm</th>
+<th>postgres</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">acme/checkout-web</code></td>
+<td><span class="hk-tag ok">22.11</span></td>
+<td>—</td>
+<td><span class="hk-tag ok">10.4</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code dir="auto">acme/admin-ui</code></td>
+<td><span class="hk-tag bad">18</span></td>
+<td>—</td>
+<td><span class="hk-tag warn">8.15</span></td>
+<td>—</td>
+</tr>
+<tr>
+<td><code dir="auto">acme/billing-api</code></td>
+<td>—</td>
+<td><span class="hk-tag warn">1.23</span></td>
+<td>—</td>
+<td><span class="hk-tag warn">13</span></td>
+</tr>
+<tr>
+<td><code dir="auto">acme/widget-kit</code></td>
+<td><span class="hk-tag ok">24</span></td>
+<td>—</td>
+<td><span class="hk-tag ok">10.4</span></td>
+<td>—</td>
+</tr>
+</tbody>
+</table></div></div></figure><p class="hk-caption">Each cell is the version a repository uses, toned by its support.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="what-the-page-shows">What the page shows</h2><a class="sl-anchor-link" href="#what-the-page-shows"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “What the page shows”</span></a></div>
+<p>The stack is analyzed per group: once a day, every repository of the group is read through the forge, without a clone, and the versions found are compared with the latest releases and their end-of-life dates. The page shows the current state.</p>
+<table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Examples</th>
+<th>Read from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>runtime</td>
+<td>node, go, python, java</td>
+<td>version files (<code dir="auto">.nvmrc</code>, <code dir="auto">.tool-versions</code>, mise, <code dir="auto">go.mod</code>), images, CI setup steps</td>
+</tr>
+<tr>
+<td>package-manager</td>
+<td>pnpm, npm, yarn, bun</td>
+<td><code dir="auto">packageManager</code>, version files</td>
+</tr>
+<tr>
+<td>service</td>
+<td>postgres, redis, rabbitmq</td>
+<td>compose files, CI <code dir="auto">services</code>, deployment YAML</td>
+</tr>
+<tr>
+<td>os</td>
+<td>alpine, debian, ubuntu</td>
+<td>image tags</td>
+</tr>
+<tr>
+<td>image</td>
+<td>your base images</td>
+<td>Dockerfiles, compose, CI and deployment YAML (Helm <code dir="auto">values*.yaml</code>, <code dir="auto">k8s</code>, <code dir="auto">charts</code>, …)</td>
+</tr>
+<tr>
+<td>tool</td>
+<td>any other mise tool</td>
+<td>version files</td>
+</tr>
+</tbody>
+</table>
+<p>Support reads the same everywhere: <strong>end of life</strong>, <strong>ends soon</strong> (within 180 days by default), <strong>LTS</strong>, <strong>active</strong> or unknown. A floating version such as <code dir="auto">22</code> counts as current while the latest is any <code dir="auto">22.x</code>.</p>
+<p>A line under the tabs sums each group’s changes over the past week.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="runtimes">Runtimes</h2><a class="sl-anchor-link" href="#runtimes"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Runtimes”</span></a></div>
+<p><strong>Runtimes</strong> is a repository × tool matrix. Narrow it with the support segment (all, ends soon, end of life) and the <strong>Kind</strong> filter; the scope switch narrows groups. Below the matrix, <strong>Version lines</strong> lists each tool with its latest version and the lines in use as chips with their repository count.</p>
+<figure class="hk-ui-root hk-screen not-content" aria-label="In the panel: Supply chain › Stack › Version lines"><figcaption class="hk-screen-cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path></svg>In the panel · Supply chain › Stack › Version lines</figcaption><div class="hk-screen-body"><div class="hk-table-wrap"><table>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Latest</th>
+<th>Lines in use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>node</td>
+<td><code dir="auto">24.11.0</code></td>
+<td><span class="hk-tag ok">24 × 3</span> <span class="hk-tag ok">22 × 11</span> <span class="hk-tag bad">18 × 2</span></td>
+</tr>
+<tr>
+<td>go</td>
+<td><code dir="auto">1.25.4</code></td>
+<td><span class="hk-tag ok">1.25 × 4</span> <span class="hk-tag warn">1.23 × 1</span></td>
+</tr>
+<tr>
+<td>postgres</td>
+<td><code dir="auto">18.1</code></td>
+<td><span class="hk-tag ok">17 × 2</span> <span class="hk-tag warn">13 × 1</span></td>
+</tr>
+</tbody>
+</table></div></div></figure>
+<div class="sl-heading-wrapper level-h2"><h2 id="upgrade-a-release-line">Upgrade a release line</h2><a class="sl-anchor-link" href="#upgrade-a-release-line"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Upgrade a release line”</span></a></div>
+<p>A line chip or a matrix cell opens the line sheet.</p>
+<figure class="hk-ui-root hk-screen not-content" aria-label="In the panel: Supply chain › Stack › node 18"><figcaption class="hk-screen-cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path></svg>In the panel · Supply chain › Stack › node 18</figcaption><div class="hk-screen-body"><div class="hk-sheet"><div class="hk-sheet-head"><b>node 18</b><span class="hk-tag bad">End of life</span><span class="hk-sp"></span><span class="hk-mono hk-mut">1 of 9</span><span class="hk-btn">Plan upgrade with agent</span></div><dl class="hk-kv"><dt>Latest</dt><dd>24.11.0 · LTS 22</dd><dt>Suggested</dt><dd>18 → 22</dd></dl><div class="hk-table-wrap"><table>
+<thead>
+<tr>
+<th>Where declared</th>
+<th>Writes</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">acme/admin-ui</code></td>
+<td><code dir="auto">18</code></td>
+<td><code dir="auto">.nvmrc</code></td>
+</tr>
+<tr>
+<td><code dir="auto">acme/admin-ui</code></td>
+<td><code dir="auto">node:18-alpine</code></td>
+<td><code dir="auto">Dockerfile</code></td>
+</tr>
+<tr>
+<td><code dir="auto">acme/legacy-tools</code></td>
+<td><code dir="auto">18.20.4</code></td>
+<td><code dir="auto">.tool-versions</code></td>
+</tr>
+</tbody>
+</table></div></div></div></figure>
+<ul>
+<li><strong>Where declared</strong> lists the repositories on the line, what each writes and where. Each repository links to its hub.</li>
+<li>With a cell picked, <strong>Selected cell</strong> adds that repository’s versions, the suggested upgrade steps and the convention its file is checked against.</li>
+<li><span class="hk-uiref">Plan upgrade with agent</span> appears when a newer line is suggested and you have <code dir="auto">tasks:run</code>.
+It starts one upgrade task group that moves every repository on the line to the first suggested
+step, with the spend cap and the write-task checks of any rollout.</li>
+</ul>
+<div class="sl-heading-wrapper level-h2"><h2 id="conventions">Conventions</h2><a class="sl-anchor-link" href="#conventions"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Conventions”</span></a></div>
+<p>Conventions are golden files every repository of a group should match: an <code dir="auto">.nvmrc</code>, a shared lint config, a CI include. <strong>Conventions</strong> is a repository × file grid.</p>
+<figure class="hk-ui-root hk-screen not-content" aria-label="In the panel: Supply chain › Stack › Conventions"><figcaption class="hk-screen-cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path></svg>In the panel · Supply chain › Stack › Conventions</figcaption><div class="hk-screen-body"><div class="hk-tabs-ui"><span>Runtimes</span><span class="on">Conventions<span class="hk-count-ui">2</span></span></div><div class="hk-table-wrap"><table>
+<thead>
+<tr>
+<th>Repository</th>
+<th><code dir="auto">.nvmrc</code></th>
+<th><code dir="auto">package.json</code></th>
+<th><code dir="auto">.gitlab-ci.yml</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">acme/checkout-web</code></td>
+<td><span class="hk-tag ok">matches</span></td>
+<td><span class="hk-tag ok">matches</span></td>
+<td><span class="hk-tag ok">matches</span></td>
+</tr>
+<tr>
+<td><code dir="auto">acme/admin-ui</code></td>
+<td><span class="hk-tag warn">drifts</span></td>
+<td><span class="hk-tag warn">drifts</span></td>
+<td><span class="hk-tag ok">matches</span></td>
+</tr>
+<tr>
+<td><code dir="auto">acme/docs-site</code></td>
+<td><span class="hk-tag bad">missing</span></td>
+<td><span class="hk-tag ok">matches</span></td>
+<td><span class="hk-tag">error</span></td>
+</tr>
+</tbody>
+</table></div></div></figure>
+<p>A cell opens its problems and the suggested fix as a diff:</p>
+<figure class="hk-ui-root hk-screen not-content" aria-label="In the panel: Supply chain › Stack › Conventions › acme/admin-ui · package.json"><figcaption class="hk-screen-cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path></svg>In the panel · Supply chain › Stack › Conventions › acme/admin-ui · package.json</figcaption><div class="hk-screen-body"><div class="hk-stack"><dl class="hk-kv"><dt>Problem</dt><dd>engines.node: expected &quot;&gt;=22&quot;, found &quot;&gt;=18&quot;</dd></dl><div class="hk-ui-root hk-diff not-content"><div class="hk-diff-file"><span>package.json</span><span class="hk-sp"></span><span>+1 −1</span></div><div class="hk-diff-line"><span class="n">4</span><span> </span><span>  &quot;engines&quot;: {</span></div><div class="hk-diff-line del"><span class="n">5</span><span>−</span><span>    &quot;node&quot;: &quot;&gt;=18&quot;</span></div><div class="hk-diff-line add"><span class="n">5</span><span>+</span><span>    &quot;node&quot;: &quot;&gt;=22&quot;</span></div><div class="hk-diff-line"><span class="n">6</span><span> </span><span>  },</span></div></div><div class="hk-toolbar"><span class="hk-sp"></span><span class="hk-btn primary">Open merge request</span></div></div></div></figure>
+<p><span class="hk-uiref">Open merge request</span> (needs <code dir="auto">analyses:run</code>) opens the fix in that repository. Problems and
+diffs show only for repositories you may read analyses of; elsewhere you see how many differences
+there are.</p>
+<div class="sl-heading-wrapper level-h3"><h3 id="define-a-convention">Define a convention</h3><a class="sl-anchor-link" href="#define-a-convention"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Define a convention”</span></a></div>
+<p>Conventions are set per group in the <code dir="auto">analyzers.stack</code> setting, which the panel edits as a form under <a href="/guide/settings/analyzers/">Settings › Analyzers</a>.</p>
+<figure class="hk-ui-root hk-screen not-content" aria-label="In the panel: Settings › Analyzers › stack › Conventions"><figcaption class="hk-screen-cap"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"></rect><path d="M3 9h18"></path></svg>In the panel · Settings › Analyzers › stack › Conventions</figcaption><div class="hk-screen-body"><div class="hk-fields" style="--cols: 2"><div class="hk-field"><span class="hk-field-label">Path</span><span class="hk-field-box hk-mono">.nvmrc</span></div><div class="hk-field"><span class="hk-field-label">Mode</span><span class="hk-field-box">exact</span></div><div class="hk-field wide"><span class="hk-field-label">Content</span><span class="hk-field-box hk-mono">22</span></div><div class="hk-field"><span class="hk-field-label">Create where missing</span><span class="hk-field-box"><span class="hk-switch on"></span>Suggest creating the file</span></div></div></div></figure>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Matches when</th>
+<th>Suggested fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code dir="auto">exact</code></td>
+<td>the file equals the golden content</td>
+<td>replace the file</td>
+</tr>
+<tr>
+<td><code dir="auto">json-subset</code></td>
+<td>every key and array item of the golden JSON is present and equal</td>
+<td>in-place edits, comments kept</td>
+</tr>
+<tr>
+<td><code dir="auto">yaml-subset</code></td>
+<td>the same for YAML</td>
+<td>in-place edits</td>
+</tr>
+<tr>
+<td><code dir="auto">lines-present</code></td>
+<td>every non-blank golden line appears, in any order</td>
+<td>append the missing lines</td>
+</tr>
+</tbody>
+</table>
+<aside aria-label="Note" class="starlight-aside starlight-aside--note"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 11a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0v-4a1 1 0 0 0-1-1Zm.38-3.92a1 1 0 0 0-.76 0 1 1 0 0 0-.33.21 1.15 1.15 0 0 0-.21.33 1 1 0 0 0 .21 1.09c.097.088.209.16.33.21A1 1 0 0 0 13 8a1.05 1.05 0 0 0-.29-.71 1 1 0 0 0-.33-.21ZM12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm0 18a8 8 0 1 1 0-16.001A8 8 0 0 1 12 20Z"/></svg>Note</p><div class="starlight-aside__content"><p>Conventions are exact files on purpose: no model writes or judges them.</p></div></aside>
+<div class="sl-heading-wrapper level-h2"><h2 id="run-a-scan">Run a scan</h2><a class="sl-anchor-link" href="#run-a-scan"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Run a scan”</span></a></div>
+<p><span class="hk-uiref">Run stack scan</span> queues a new analysis instead of waiting for the daily one. Other
+<code dir="auto">analyzers.stack</code> options: <code dir="auto">ignore</code> (tools or images to leave out, such as
+<code dir="auto">image:registry.example.com/*</code>), <code dir="auto">soonDays</code> (default 180) and <code dir="auto">lookups</code> (off only collects what
+repositories use, without latest versions).</p>
+<aside aria-label="Caution" class="starlight-aside starlight-aside--caution"><p class="starlight-aside__title" aria-hidden="true"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" class="starlight-aside__icon"><path d="M12 16a1 1 0 1 0 0 2 1 1 0 0 0 0-2Zm10.67 1.47-8.05-14a3 3 0 0 0-5.24 0l-8 14A3 3 0 0 0 3.94 22h16.12a3 3 0 0 0 2.61-4.53Zm-1.73 2a1 1 0 0 1-.88.51H3.94a1 1 0 0 1-.88-.51 1 1 0 0 1 0-1l8-14a1 1 0 0 1 1.78 0l8.05 14a1 1 0 0 1 .05 1.02v-.02ZM12 8a1 1 0 0 0-1 1v4a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1Z"/></svg>Caution</p><div class="starlight-aside__content"><p>Helm templates and Kustomize overlays are not rendered, image tags that are code names (<code dir="auto">bookworm</code>) count as unpinned, and unquoted YAML versions like <code dir="auto">3.10</code> read as <code dir="auto">3.1</code>. Quote them.</p></div></aside>
+<div class="sl-heading-wrapper level-h2"><h2 id="in-a-group">In a group</h2><a class="sl-anchor-link" href="#in-a-group"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “In a group”</span></a></div>
+<p>A group page’s <strong>Stack &amp; conventions</strong> tab shows the same view for one group. The repository hub’s stack link opens that tab for the repository’s group, or this page when the repository is in no group.</p>
+<div class="sl-heading-wrapper level-h2"><h2 id="related">Related</h2><a class="sl-anchor-link" href="#related"><span aria-hidden="true" class="sl-anchor-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="m12.11 15.39-3.88 3.88a2.52 2.52 0 0 1-3.5 0 2.47 2.47 0 0 1 0-3.5l3.88-3.88a1 1 0 1 0-1.42-1.42l-3.88 3.89a4.48 4.48 0 0 0 6.33 6.33l3.89-3.88a1 1 0 0 0-1.42-1.42m8.58-12.08a4.49 4.49 0 0 0-6.33 0l-3.89 3.88a1 1 0 1 0 1.42 1.42l3.88-3.88a2.52 2.52 0 0 1 3.5 0 2.47 2.47 0 0 1 0 3.5l-3.88 3.88a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l3.88-3.89a4.49 4.49 0 0 0 0-6.33M8.83 15.17a1 1 0 0 0 .71.29 1 1 0 0 0 .71-.29l4.92-4.92a1 1 0 1 0-1.42-1.42l-4.92 4.92a1 1 0 0 0 0 1.42"></path></svg></span><span class="sr-only" data-pagefind-ignore>Section titled “Related”</span></a></div>
+<ul>
+<li><a href="/guide/repos/groups/">Groups</a> — where a group’s stack and conventions live.</li>
+<li><a href="/guide/supply-chain/libraries/">Libraries</a> — package dependencies rather than tools.</li>
+<li><a href="/modules/stack/">Stack analyzer</a> — what is read and how versions are judged.</li>
+<li><a href="/agents/tools/">Agents › Tools</a> — <code dir="auto">stack_usage</code> and <code dir="auto">repo_stack</code> for agents writing Dockerfiles and CI.</li>
+</ul></div><footer class="sl-flex astro-pkxzuylw"><div class="meta sl-flex astro-pkxzuylw"><a href="https://github.com/holtkeeper/holtkeeper/edit/main/docs/src/content/docs/guide/supply-chain/stack.mdx" class="sl-flex print:hidden astro-fryamha7"><svg aria-hidden="true" class="astro-fryamha7 astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.2em;"><path d="M22 7.24a1 1 0 0 0-.29-.71l-4.24-4.24a1 1 0 0 0-1.1-.22 1 1 0 0 0-.32.22l-2.83 2.83L2.29 16.05a1 1 0 0 0-.29.71V21a1 1 0 0 0 1 1h4.24a1 1 0 0 0 .76-.29l10.87-10.93L21.71 8c.1-.1.17-.2.22-.33a1 1 0 0 0 0-.24v-.14l.07-.05ZM6.83 20H4v-2.83l9.93-9.93 2.83 2.83L6.83 20ZM18.17 8.66l-2.83-2.83 1.42-1.41 2.82 2.82-1.41 1.42Z"/></svg>Edit page</a></div><div class="pagination-links print:hidden astro-jhy2ux4d" dir="ltr"><a href="/guide/supply-chain/licenses/" rel="prev" class="astro-jhy2ux4d"><svg aria-hidden="true" class="astro-jhy2ux4d astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17 11H9.41l3.3-3.29a1.004 1.004 0 1 0-1.42-1.42l-5 5a1 1 0 0 0-.21.33 1 1 0 0 0 0 .76 1 1 0 0 0 .21.33l5 5a1.002 1.002 0 0 0 1.639-.325 1 1 0 0 0-.219-1.095L9.41 13H17a1 1 0 0 0 0-2Z"/></svg><span class="astro-jhy2ux4d">Previous<br class="astro-jhy2ux4d"><span class="link-title astro-jhy2ux4d">Licenses</span></span></a><a href="/guide/supply-chain/public-api/" rel="next" class="astro-jhy2ux4d"><svg aria-hidden="true" class="astro-jhy2ux4d astro-yqwjbp5j" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="--sl-icon-size: 1.5rem;"><path d="M17.92 11.62a1.001 1.001 0 0 0-.21-.33l-5-5a1.003 1.003 0 1 0-1.42 1.42l3.3 3.29H7a1 1 0 0 0 0 2h7.59l-3.3 3.29a1.002 1.002 0 0 0 .325 1.639 1 1 0 0 0 1.095-.219l5-5a1 1 0 0 0 .21-.33 1 1 0 0 0 0-.76Z"/></svg><span class="astro-jhy2ux4d">Next<br class="astro-jhy2ux4d"><span class="link-title astro-jhy2ux4d">Public API</span></span></a></div></footer></div></div></main></div></div></div></div></body></html>
